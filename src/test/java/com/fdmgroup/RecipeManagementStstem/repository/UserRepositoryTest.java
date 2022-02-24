@@ -14,30 +14,29 @@ import com.fdmgroup.RecipeManagementStstem.model.User;
 import com.fdmgroup.RecipeManagementStstem.repository.UserRepository;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = Replace.NONE )
-@Rollback(false)
+@AutoConfigureTestDatabase
 public class UserRepositoryTest {
 	
-	@Autowired
-	private UserRepository userRepo;
-	
-	@Autowired
-    private TestEntityManager entityManager;
-	
-	@Test
-	public void testCreateUser() {
-		User user = new User();
-	    user.setEmail("John@gmail.com");
-	    user.setUserName("JDoe123");
-	    user.setPassword("password");
-	    user.setFirstName("John");
-	    user.setLastName("Doe");
-	     
-	    User savedUser = userRepo.save(user);
-	     
-	    User existUser = entityManager.find(User.class, savedUser.getId());
-	     
-	    assertEquals(user.getEmail(), existUser.getEmail());
-	}
+//	@Autowired
+//	private UserRepository userRepo;
+//	
+//	@Autowired
+//    private TestEntityManager entityManager;
+//	
+//	@Test
+//	public void testCreateUser() {
+//		User user = new User();
+//	    user.setEmail("John@gmail.com");
+//	    user.setUserName("JDoe123");
+//	    user.setPassword("password");
+//	    user.setFirstName("John");
+//	    user.setLastName("Doe");
+//	     
+//	    User savedUser = userRepo.save(user);
+//	     
+//	    User existUser = entityManager.find(User.class, savedUser.getId());
+//	     
+//	    assertEquals(user.getEmail(), existUser.getEmail());
+//	}
 
 }

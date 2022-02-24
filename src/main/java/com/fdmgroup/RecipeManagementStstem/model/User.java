@@ -38,7 +38,6 @@ public class User {
 	private String lastName;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-//	@JsonBackReference
 	private List<RecipeContent> recipeContents = new ArrayList<>();
 
 	public User() {

@@ -25,35 +25,38 @@ import java.util.Map;
 @CrossOrigin("*")
 public class AuthController {
 
-    @Autowired private UserRepository userRepo;
-    @Autowired private JWTUtil jwtUtil;
-    @Autowired private AuthenticationManager authManager;
-    @Autowired private PasswordEncoder passwordEncoder;
+	@Autowired
+	private UserRepository userRepo;
+	@Autowired
+	private JWTUtil jwtUtil;
+	@Autowired
+	private AuthenticationManager authManager;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/register")
-    public Map<String, Object> registerHandler(@RequestBody User user){
-        String encodedPass = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPass);
-        user = userRepo.save(user);
-        String token = jwtUtil.generateToken(user.getUserName());
-        return Collections.singletonMap("jwttoken", token);
-    }
+	@PostMapping("/register")
+	public Map<String, Object> registerHandler(@RequestBody User user) {
+		String encodedPass = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedPass);
+		user = userRepo.save(user);
+		String token = jwtUtil.generateToken(user.getUserName());
+		return Collections.singletonMap("jwttoken", token);
+	} 
 
-    @PostMapping("/login")
-    public Map<String, Object> loginHandler(@RequestBody LoginCredentials body){
-        try {
-            UsernamePasswordAuthenticationToken authInputToken =
-                    new UsernamePasswordAuthenticationToken(body.getUserName(), body.getPassword());
+	@PostMapping("/login")
+	public Map<String, Object> loginHandler(@RequestBody LoginCredentials body) {
+		try {
+			UsernamePasswordAuthenticationToken authInputToken = new UsernamePasswordAuthenticationToken(
+					body.getUserName(), body.getPassword());
 
-            authManager.authenticate(authInputToken);
+			authManager.authenticate(authInputToken);
 
-            String token = jwtUtil.generateToken(body.getUserName());
+			String token = jwtUtil.generateToken(body.getUserName());
 
-            return Collections.singletonMap("jwttoken", token);
-        }catch (AuthenticationException authExc){
-            throw new RuntimeException("Invalid Login Credentials");
-        }
-    }
-
+			return Collections.singletonMap("jwttoken", token);
+		} catch (AuthenticationException authExc) {
+			throw new RuntimeException("Invalid Login Credentials");
+		}
+	}
 
 }

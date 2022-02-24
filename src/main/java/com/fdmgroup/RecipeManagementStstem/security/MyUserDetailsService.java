@@ -16,18 +16,16 @@ import java.util.Optional;
 @Component
 public class MyUserDetailsService implements UserDetailsService {
 
-    @Autowired 
-    private UserRepository userRepo;
+	@Autowired
+	private UserRepository userRepo;
 
-    @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Optional<User> userRes = userRepo.findByUserName(userName);
-        if(userRes.isEmpty())
-            throw new UsernameNotFoundException("Could not findUser with userName = " + userName);
-        User user = userRes.get();
-        return new org.springframework.security.core.userdetails.User(
-                userName,
-                user.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
-    }
+	@Override
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		Optional<User> userRes = userRepo.findByUserName(userName);
+		if (userRes.isEmpty())
+			throw new UsernameNotFoundException("Could not findUser with userName = " + userName);
+		User user = userRes.get();
+		return new org.springframework.security.core.userdetails.User(userName, user.getPassword(),
+				Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+	}
 }

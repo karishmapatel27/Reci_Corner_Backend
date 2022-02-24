@@ -2,9 +2,9 @@ package com.fdmgroup.RecipeManagementStstem.model;
 
 public class LoginCredentials {
 
-    private String userName;
-    private String password;
-    
+	private String userName;
+	private String password;
+
 	public LoginCredentials() {
 		super();
 	}
@@ -35,5 +35,5 @@ public class LoginCredentials {
 	public String toString() {
 		return "LoginCredentials [userName=" + userName + ", password=" + password + "]";
 	}
-    
+
 }

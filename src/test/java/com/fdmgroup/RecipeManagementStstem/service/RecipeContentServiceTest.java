@@ -46,7 +46,7 @@ public class RecipeContentServiceTest {
 		
 		verify(mockRecipeContentRepo).save(recipeContent); 
 		assertEquals(recipeContent.getRecipeName(), createdRecipeContent.getRecipeName());
-	}
+	} 
 	
 	@Test
 	public void that_getAll_returns_all_recipeContent_from_repository() {
