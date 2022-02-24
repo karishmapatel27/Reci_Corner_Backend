@@ -7,5 +7,7 @@ import com.fdmgroup.RecipeManagementStstem.model.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
+	
+	
 
 }

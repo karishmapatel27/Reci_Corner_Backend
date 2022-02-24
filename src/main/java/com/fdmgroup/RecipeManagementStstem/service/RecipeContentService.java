@@ -44,7 +44,7 @@ public class RecipeContentService {
 	}
 	
 	public void deleteById(int id) {
-		 recipeContentRepo.deleteById(id);
+		 recipeContentRepo.deleteById(id); 
 	}
 	
 }
