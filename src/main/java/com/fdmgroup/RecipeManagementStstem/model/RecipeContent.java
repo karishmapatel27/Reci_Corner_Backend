@@ -35,13 +35,11 @@ public class RecipeContent {
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-//	@JsonManagedReference
 	@JsonIgnore
 	private User user;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Category_id")
-	//@JsonManagedReference
 	private Category category;
 
 	public RecipeContent() {

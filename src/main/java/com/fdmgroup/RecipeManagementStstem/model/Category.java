@@ -28,7 +28,6 @@ public class Category {
 	private String categoryName;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-//	@JsonBackReference
 	@JsonIgnore
 	private List<RecipeContent> recipeContents = new ArrayList<>();
 
