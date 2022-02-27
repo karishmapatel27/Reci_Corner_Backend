@@ -55,7 +55,7 @@ public class AuthController {
 
 			return Collections.singletonMap("jwttoken", token);
 		} catch (AuthenticationException authExc) {
-			throw new RuntimeException("Invalid Login Credentials");
+			throw new RuntimeException("Invalid Login Credentials"); 
 		}
 	}
 
